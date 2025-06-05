@@ -8,8 +8,8 @@ public class Conjured implements ItemUpdater{
     public void update (Item item) {
         updateSellInDays(item);
         if (item.sellIn >= 0)
-            item.quality-=2;
+            decrementQuality (item, 2);
         else
-            item.quality-=4;
+            decrementQuality (item, 4);
     }
 }
