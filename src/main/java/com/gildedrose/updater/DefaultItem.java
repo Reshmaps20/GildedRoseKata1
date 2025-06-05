@@ -10,6 +10,6 @@ public class DefaultItem implements ItemUpdater{
         if (item.sellIn >= 0)
             item.quality--;
         else
-            item.quality-=2;
+            item.quality = Math.max (item.quality - 2, 0);
     }
 }
