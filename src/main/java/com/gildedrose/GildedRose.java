@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import com.gildedrose.factory.ItemUpdaterFactory;
+import java.util.Arrays;
+
 class GildedRose {
     Item[] items;
 
@@ -8,15 +11,8 @@ class GildedRose {
     }
 
     public void updateQuality () {
-        for (Item item : items) {
-            if (item.name.equals ("Aged Brie"))
-                item.sellIn--;
-            if (item.quality < 50) {
-                item.quality++;
-                if (item.sellIn < 0) {
-                    item.quality++;
-                }
-            }
-        }
+        Arrays.stream (items).forEach (item -> {
+            ItemUpdaterFactory.getItems (item.name).update (item);
+        });
     }
 }
