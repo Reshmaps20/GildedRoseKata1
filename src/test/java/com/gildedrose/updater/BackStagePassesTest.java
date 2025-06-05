@@ -38,4 +38,14 @@ public class BackStagePassesTest {
         backStagePasses.update (item);
         assertEquals (50, item.quality);
     }
+
+    @Test
+    @DisplayName("Backstage Pass: quality increases by 2 when sellIn is between 6 and 10")
+    void updateQualityWhenSellInBetweenFiveAndTen () {
+
+        Item item = new Item (ItemType.BACK_STAGE_PASSES.getItemName (), 8, 10);
+        BackStagePasses backStagePasses = new BackStagePasses();
+        backStagePasses.update (item);
+        assertEquals (12, item.quality);
+    }
 }
