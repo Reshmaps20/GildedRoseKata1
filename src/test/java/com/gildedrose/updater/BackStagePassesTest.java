@@ -23,7 +23,7 @@ public class BackStagePassesTest {
     @DisplayName("Quality of BackStage Passes increases by 1 each day before the sellIn date")
     void updateQualityBeforeSellInDayForBackStagePasses () {
 
-        Item item = new Item (ItemType.BACK_STAGE_PASSES.getItemName (), 5, 10);
+        Item item = new Item (ItemType.BACK_STAGE_PASSES.getItemName (), 15, 10);
         BackStagePasses backStagePasses = new BackStagePasses();
         backStagePasses.update (item);
         assertEquals (11, item.quality);
@@ -47,5 +47,15 @@ public class BackStagePassesTest {
         BackStagePasses backStagePasses = new BackStagePasses();
         backStagePasses.update (item);
         assertEquals (12, item.quality);
+    }
+
+    @Test
+    @DisplayName("Backstage Pass: quality increases by 3 when sellIn less than 5")
+    void updateQualityWhenSellInLessThanFive () {
+
+        Item item = new Item (ItemType.BACK_STAGE_PASSES.getItemName (), 4, 12);
+        BackStagePasses backStagePasses = new BackStagePasses();
+        backStagePasses.update (item);
+        assertEquals (15, item.quality);
     }
 }
