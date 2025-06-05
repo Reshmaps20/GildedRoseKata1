@@ -18,4 +18,13 @@ public class ConjuredTest {
         conjured.update (item);
         assertEquals (0, item.sellIn);
     }
+
+    @Test
+    @DisplayName("Conjured : quality decreases by 2 before sellIn date")
+    void qualityDecreasesByTwoBeforeSellIn() {
+        Item item = new Item(ItemType.CONJURED.getItemName (), 5, 10);
+        Conjured conjured = new Conjured();
+        conjured.update (item);
+        assertEquals(8, item.quality);
+    }
 }

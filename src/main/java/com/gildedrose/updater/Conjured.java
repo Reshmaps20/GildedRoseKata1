@@ -7,5 +7,8 @@ public class Conjured implements ItemUpdater{
     @Override
     public void update (Item item) {
         updateSellInDays(item);
+        if (item.sellIn >= 0) {
+            item.quality-=2;
+        }
     }
 }
