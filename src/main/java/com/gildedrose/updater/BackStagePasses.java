@@ -3,14 +3,14 @@ package com.gildedrose.updater;
 import com.gildedrose.Item;
 import static com.gildedrose.constant.Constants.*;
 import static com.gildedrose.validation.ItemValidator.*;
+import static com.gildedrose.validation.ItemValidator.setQualityToMinimalQuality;
 
 public class BackStagePasses implements ItemUpdater{
     @Override
     public void update (Item item) {
         incrementQuality (item, calculateIncrementValue (item));
         updateSellInDays(item);
-        if (isExpired (item))
-            item.quality = MIN_QUALITY;
+        updateQualityForExpiredItem (item);
     }
 
     private static int calculateIncrementValue (Item item) {
@@ -22,4 +22,8 @@ public class BackStagePasses implements ItemUpdater{
         return value > lower && value <= upper;
     }
 
+    private static void updateQualityForExpiredItem (Item item) {
+        if (isExpired (item))
+            setQualityToMinimalQuality (item);
+    }
 }

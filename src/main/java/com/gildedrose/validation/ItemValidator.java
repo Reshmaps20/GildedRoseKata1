@@ -21,4 +21,8 @@ public class ItemValidator {
     public static void decrementQuality (Item item, int amount) {
         item.quality = Math.max (item.quality - amount, MIN_QUALITY);
     }
+
+    public static void setQualityToMinimalQuality (Item item) {
+        item.quality = MIN_QUALITY;
+    }
 }
