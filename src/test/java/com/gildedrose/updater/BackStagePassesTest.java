@@ -58,4 +58,14 @@ public class BackStagePassesTest {
         backStagePasses.update (item);
         assertEquals (15, item.quality);
     }
+
+    @Test
+    @DisplayName("Backstage Pass: quality drops to 0 when sellIn expires")
+    void updateQualityWhenSellInExpires () {
+
+        Item item = new Item (ItemType.BACK_STAGE_PASSES.getItemName (), 0, 12);
+        BackStagePasses backStagePasses = new BackStagePasses();
+        backStagePasses.update (item);
+        assertEquals (0, item.quality);
+    }
 }
