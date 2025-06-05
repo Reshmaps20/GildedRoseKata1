@@ -39,4 +39,12 @@ public class ItemUpdaterFactoryTest {
         ItemUpdater sulfuras = ItemUpdaterFactory.getItems (ItemType.SULFURAS.getItemName ());
         assertTrue (sulfuras instanceof Sulfuras);
     }
+
+    @Test
+    @DisplayName("Retrieving Conjured item")
+    void getConjuredItem() {
+
+        ItemUpdater conjured = ItemUpdaterFactory.getItems (ItemType.CONJURED.getItemName ());
+        assertTrue (conjured instanceof Conjured);
+    }
 }
