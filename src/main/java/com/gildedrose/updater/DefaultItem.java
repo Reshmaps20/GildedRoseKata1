@@ -7,8 +7,9 @@ public class DefaultItem implements ItemUpdater{
     @Override
     public void update (Item item) {
         updateSellInDays(item);
-        if (item.sellIn >= 0) {
+        if (item.sellIn >= 0)
             item.quality--;
-        }
+        else
+            item.quality-=2;
     }
 }
