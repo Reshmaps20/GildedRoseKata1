@@ -12,7 +12,8 @@ public class GildedRoseTest {
         return Stream.of(
                 Arguments.of(new Item[] { new Item(ItemType.AGED_BRIE.getItemName (), 1, 1) }, 0),
                 Arguments.of(new Item[] { new Item("Elixir of the Mongoose", 2, 1) }, 1),
-                Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 5, 1) }, 4)
+                Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 5, 1) }, 4),
+                Arguments.of(new Item[] { new Item(ItemType.SULFURAS.getItemName (), 5, 80) }, 5)
         );
     }
 
@@ -37,7 +38,9 @@ public class GildedRoseTest {
 
                 Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 15, 10) }, 11),
                 Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 6, 10) }, 12),
-                Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 2, 10) }, 13)
+                Arguments.of(new Item[] { new Item(ItemType.BACK_STAGE_PASSES.getItemName (), 2, 10) }, 13),
+
+                Arguments.of(new Item[] { new Item(ItemType.SULFURAS.getItemName (), 2, 80) }, 80)
         );
     }
 
