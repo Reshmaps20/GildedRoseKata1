@@ -1,15 +1,20 @@
 package com.gildedrose.updater;
 
 import com.gildedrose.Item;
+
+import static com.gildedrose.constant.Constants.*;
 import static com.gildedrose.validation.ItemValidator.*;
 
 public class Conjured implements ItemUpdater{
     @Override
     public void update (Item item) {
-        updateSellInDays(item);
-        if (item.sellIn >= 0)
-            decrementQuality (item, 2);
-        else
-            decrementQuality (item, 4);
+        decrementQuality (item, DOUBLE_QUALITY_DECREMENT);
+        updateSellInDays (item);
+        updateQualityForExpiredItem (item);
+    }
+
+    private static void updateQualityForExpiredItem (Item item) {
+        if (isExpired (item))
+            decrementQuality (item, DOUBLE_QUALITY_DECREMENT);
     }
 }
