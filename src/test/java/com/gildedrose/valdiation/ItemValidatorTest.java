@@ -57,4 +57,23 @@ public class ItemValidatorTest {
         boolean result = itemValidator.isExpired (input);
         assertEquals (expectedValue, result);
     }
+
+    private static Stream<Arguments> getItemsForDecrementQuality () {
+
+        return Stream.of (
+                Arguments.of (new Item ("Elixir of the Mongoose", 5, 10), 2, 8),
+                Arguments.of (new Item ("Elixir of the Mongoose", 5, 2), 2, 0),
+                Arguments.of (new Item ("Elixir of the Mongoose", 5, 0), 2, 0)
+        );
+    }
+
+    @ParameterizedTest(name = "Decrement item quality - {index} ")
+    @MethodSource("getItemsForDecrementQuality")
+    @DisplayName("Decrement item quality")
+    void decrementQualityForItems (Item input, int amount, int expectedQuality) {
+
+        ItemValidator itemValidator = new ItemValidator ();
+        itemValidator.decrementQuality (input, amount);
+        assertEquals (expectedQuality, input.quality);
+    }
 }

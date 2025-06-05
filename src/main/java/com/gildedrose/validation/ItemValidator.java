@@ -2,6 +2,7 @@ package com.gildedrose.validation;
 
 import com.gildedrose.Item;
 import static com.gildedrose.constant.Constants.*;
+import static com.gildedrose.constant.Constants.MIN_QUALITY;
 
 public class ItemValidator {
 
@@ -15,5 +16,9 @@ public class ItemValidator {
 
     public static boolean isExpired (Item item) {
         return item.sellIn < 0;
+    }
+
+    public static void decrementQuality (Item item, int amount) {
+        item.quality = Math.max (item.quality - amount, MIN_QUALITY);
     }
 }
